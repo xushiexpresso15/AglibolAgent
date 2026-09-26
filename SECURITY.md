@@ -2,9 +2,9 @@
 
 ## Supported Versions
 
-| Version | Supported          |
-|:-------:|:------------------:|
-| 0.1.x   | :white_check_mark: |
+| Version | Supported |
+|:-------:|:---------:|
+| 0.1.x   | Yes       |
 
 ## Reporting a Vulnerability
 
@@ -17,7 +17,7 @@ The Aglibol Agent team takes security vulnerabilities seriously. Because Aglibol
 If you discover a security vulnerability in Aglibol Agent, please **do not** open a public issue.
 
 ### Preferred Method
-Please submit your vulnerability report privately via GitHub's [Private Vulnerability Reporting](https://github.com/Aglibol/AglibolAgent/security/advisories/new).
+Please submit your vulnerability report privately via GitHub's [Private Vulnerability Reporting](https://github.com/xushiexpresso15/AglibolAgent/security/advisories/new).
 
 ### Alternative Method
 If you are unable to use GitHub Security Advisories, email your findings to:

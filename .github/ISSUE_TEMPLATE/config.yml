@@ -1,8 +1,9 @@
 blank_issues_enabled: false
 contact_links:
-  - name: "💬 GitHub Discussions"
-    url: "https://github.com/Aglibol/AglibolAgent/discussions"
+  - name: "GitHub Discussions"
+    url: "https://github.com/xushiexpresso15/AglibolAgent/discussions"
     about: "Ask questions, share ideas, and connect with other Aglibol Agent users."
-  - name: "🔒 Security Vulnerability Reporting"
-    url: "https://github.com/Aglibol/AglibolAgent/security/advisories/new"
+  - name: "Security Vulnerability Reporting"
+    url: "https://github.com/xushiexpresso15/AglibolAgent/security/advisories/new"
     about: "Privately disclose security vulnerabilities."
+

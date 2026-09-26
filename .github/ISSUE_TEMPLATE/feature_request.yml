@@ -1,4 +1,4 @@
-name: "💡 Feature Request"
+name: "Feature Request"
 description: "Suggest an idea or new capability for Aglibol Agent"
 title: "[Feature]: "
 labels: ["enhancement"]
@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        We love new ideas! Please explain the problem you are trying to solve and how you envision this feature working.
+        Thank you for proposing an enhancement to Aglibol Agent. Please provide detailed context regarding the use case and your suggested technical design.
 
   - type: textarea
     id: problem
