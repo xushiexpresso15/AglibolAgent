@@ -1,0 +1,31 @@
+{
+  "name": "aglibol-agent",
+  "version": "0.1.0",
+  "description": "Aglibol Agent: An open-source, Ollama-native multi-agent AI framework for personal devices.",
+  "main": "bin/aglibol.js",
+  "bin": {
+    "aglibol": "./bin/aglibol.js",
+    "aglibol-agent": "./bin/aglibol.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aglibol/AglibolAgent.git"
+  },
+  "keywords": [
+    "agent",
+    "aglibol",
+    "aglibol-agent",
+    "ollama",
+    "ai",
+    "coding-agent",
+    "multi-agent",
+    "local-ai",
+    "grok-build",
+    "claude-code"
+  ],
+  "author": "Aglibol Agent Community <contributors@aglibol.ai>",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,18 @@
+# Profile for Tier 4: 12 GB VRAM (RTX 3060 12GB, RTX 4070)
+tier: "tier4_12gb"
+vram_range: "10GB - 14GB"
+
+optimization:
+  num_ctx: 8192
+  keep_alive: "5m"
+  flash_attention: true
+  max_output_tokens: 4096
+
+recommended_models:
+  planner: "qwen2.5:14b"
+  researcher: "qwen2.5:14b"
+  coder: "qwen2.5-coder:14b"
+  reviewer: "qwen2.5:14b"
+  tester: "qwen2.5-coder:14b"
+  doc_writer: "phi3:mini"
+  vision: "llava:13b"

@@ -1,0 +1,50 @@
+# Aglibol Agent Default Configuration
+aglibol:
+  version: "0.1.0"
+
+  # Hardware profiling
+  hardware:
+    auto_detect: true
+    # Manual overrides (leave unset to use auto-detected values)
+    # vram_gb: null
+    # ram_gb: null
+    # tier: null
+
+  # Ollama connection settings
+  ollama:
+    host: "http://localhost:11434"
+    timeout: 180
+    max_retries: 3
+    retry_delay: 2.0
+
+  # Default model assignments per role
+  models:
+    planner: "qwen2.5:7b"
+    researcher: "qwen2.5:7b"
+    coder: "qwen2.5-coder:7b"
+    reviewer: "qwen2.5:7b"
+    tester: "qwen2.5-coder:7b"
+    doc_writer: "phi3:mini"
+    vision: "moondream2"
+    embedder: "nomic-embed-text"
+
+  # Resource optimization defaults (auto-calculated if set to 'auto')
+  optimization:
+    num_ctx: "auto"              # Auto-calculated based on Tier and model size
+    keep_alive: "auto"            # "0" for low VRAM, "5m" for mid, "-1" for high
+    flash_attention: true
+    num_gpu: -1                  # -1 = offload all layers possible to GPU
+    max_output_tokens: 4096
+
+  # Workflow engine configuration
+  workflow:
+    name: "default"
+    max_self_correction: 3
+    enable_human_approval: false
+    checkpoint_every_step: true
+
+  # Disk storage settings
+  storage:
+    brain_dir: "~/.aglibol"
+    max_checkpoints: 50
+    persist_messages: true

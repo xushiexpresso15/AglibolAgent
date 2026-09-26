@@ -1,0 +1,18 @@
+# Profile for Tier 6: 24+ GB VRAM (RTX 3090 / 4090 / 5090)
+tier: "tier6_24gb"
+vram_range: "22GB+"
+
+optimization:
+  num_ctx: 32768
+  keep_alive: "-1"          # Keep model resident indefinitely
+  flash_attention: true
+  max_output_tokens: 8192
+
+recommended_models:
+  planner: "qwen2.5:32b"
+  researcher: "qwen2.5:32b"
+  coder: "qwen2.5-coder:32b"
+  reviewer: "qwen2.5:32b"
+  tester: "qwen2.5-coder:32b"
+  doc_writer: "phi3:mini"
+  vision: "llava:34b"

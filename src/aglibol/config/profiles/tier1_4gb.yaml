@@ -1,0 +1,18 @@
+# Profile for Tier 1: 4 GB VRAM (RTX 3050 Laptop, GTX 1650, etc.)
+tier: "tier1_4gb"
+vram_range: "3.5GB - 5GB"
+
+optimization:
+  num_ctx: 2048
+  keep_alive: "0"           # Immediately unload models to save VRAM
+  flash_attention: true
+  max_output_tokens: 2048
+
+recommended_models:
+  planner: "qwen2.5:7b"
+  researcher: "qwen2.5:7b"
+  coder: "qwen2.5-coder:7b"
+  reviewer: "qwen2.5:7b"
+  tester: "qwen2.5-coder:7b"
+  doc_writer: "phi3:mini"
+  vision: "moondream2"

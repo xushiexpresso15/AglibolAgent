@@ -1,0 +1,78 @@
+name: "🐛 Bug Report"
+description: "Report a reproducible bug or unexpected behavior in Aglibol Agent"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! Please provide as much detail as possible to help us diagnose and fix the bug.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: "When I run 'aglibol run ...', the coder agent fails with..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: hardware_tier
+    attributes:
+      label: Hardware Compute Tier
+      description: What hardware tier was detected by Aglibol Agent?
+      options:
+        - "Tier 1 (4GB VRAM - Entry)"
+        - "Tier 2 (6GB VRAM - Budget)"
+        - "Tier 3 (8GB VRAM - Mainstream)"
+        - "Tier 4 (10-12GB VRAM - Performance)"
+        - "Tier 5 (16GB VRAM - Enthusiast)"
+        - "Tier 6 (24-48GB VRAM - Workstation)"
+        - "CPU-Only Mode (No discrete GPU)"
+    validations:
+      required: true
+
+  - type: input
+    id: ollama_version
+    attributes:
+      label: Ollama Version and Active Models
+      description: Output of `ollama --version` and the models you were using.
+      placeholder: "ollama version is 0.5.x, model: qwen2.5:7b"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - "Windows 11 / 10"
+        - "Ubuntu / Debian"
+        - "Fedora / RHEL / Arch"
+        - "macOS (Apple Silicon M-series)"
+        - "macOS (Intel)"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the behavior.
+      placeholder: |
+        1. Run 'aglibol'
+        2. Type '/model coder ...'
+        3. Enter objective '...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Traceback
+      description: Relevant terminal output or logs from ~/.aglibol/logs.
+      render: shell
+    validations:
+      required: false

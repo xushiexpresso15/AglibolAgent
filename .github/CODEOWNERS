@@ -1,0 +1,17 @@
+# CODEOWNERS for Aglibol Agent repository
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global repository maintainers
+* @Aglibol/maintainers
+
+# Core multi-agent engine and VRAM scheduler
+/src/aglibol/core/ @Aglibol/maintainers
+/src/aglibol/agents/ @Aglibol/maintainers
+
+# Security-critical tools and HITL confirmation gates
+/src/aglibol/cli/interactive/hitl.py @Aglibol/maintainers
+/src/aglibol/tools/ @Aglibol/maintainers
+/SECURITY.md @Aglibol/maintainers
+
+# CI/CD and release pipelines
+/.github/ @Aglibol/maintainers

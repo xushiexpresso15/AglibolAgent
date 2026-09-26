@@ -1,0 +1,18 @@
+# Profile for Tier 3: 8 GB VRAM (RTX 4060, RTX 3060 Ti, RX 7600)
+tier: "tier3_8gb"
+vram_range: "7.5GB - 9GB"
+
+optimization:
+  num_ctx: 4096
+  keep_alive: "2m"          # Can briefly hold model if subsequent step uses same
+  flash_attention: true
+  max_output_tokens: 4096
+
+recommended_models:
+  planner: "qwen2.5:7b"
+  researcher: "qwen2.5:7b"
+  coder: "qwen2.5-coder:7b"
+  reviewer: "qwen2.5:7b"
+  tester: "qwen2.5-coder:7b"
+  doc_writer: "phi3:mini"
+  vision: "llava:7b"

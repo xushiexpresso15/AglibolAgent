@@ -1,0 +1,38 @@
+# Default Multi-Agent Workflow Definition
+workflow:
+  name: "default"
+  description: "Standard Plan -> Code -> Review -> Test workflow"
+
+  # Definition of active agent nodes in this workflow
+  nodes:
+    planner:
+      agent: "planner"
+      model: "${models.planner}"
+      entry_point: true
+
+    coder:
+      agent: "coder"
+      model: "${models.coder}"
+
+    reviewer:
+      agent: "reviewer"
+      model: "${models.reviewer}"
+
+  # Transitions between agent nodes
+  edges:
+    - from: "planner"
+      to: "coder"
+      condition: "always"
+
+    - from: "coder"
+      to: "reviewer"
+      condition: "always"
+
+    - from: "reviewer"
+      to: "coder"
+      condition: "review_rejected"
+      max_cycles: 3
+
+    - from: "reviewer"
+      to: "end"
+      condition: "review_approved"

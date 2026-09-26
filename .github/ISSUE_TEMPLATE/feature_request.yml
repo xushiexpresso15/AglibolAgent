@@ -1,0 +1,49 @@
+name: "💡 Feature Request"
+description: "Suggest an idea or new capability for Aglibol Agent"
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We love new ideas! Please explain the problem you are trying to solve and how you envision this feature working.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem or limitation?
+      placeholder: "I'm always frustrated when..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution / New Capability
+      description: Describe the solution you'd like to see implemented.
+      placeholder: "Add support for..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or workarounds you have considered.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected Component
+      options:
+        - "CLI / Interactive REPL UX"
+        - "Multi-Agent Coordination (Planner/Coder/Reviewer)"
+        - "Model Scheduling & VRAM Optimization"
+        - "Tools & Execution Sandboxing"
+        - "Storage & Brain Persistence"
+        - "Other"
+    validations:
+      required: true
