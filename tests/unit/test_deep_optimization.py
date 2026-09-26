@@ -35,7 +35,7 @@ async def test_sandbox_default_cwd_enforcement():
     assert writer.workspace_root == Path.cwd()
 
     # Attempting to write outside cwd (e.g. to a root or temp outside cwd) must be rejected
-    outside_path = Path("C:/arbitrary_forbidden_outside_path.txt").resolve()
+    outside_path = (Path.cwd().parent / "arbitrary_forbidden_outside_path.txt").resolve()
     res = await writer.execute(path=str(outside_path), content="malicious")
     assert res.success is False
     assert "Access denied" in (res.error or "")

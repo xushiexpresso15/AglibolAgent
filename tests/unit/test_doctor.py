@@ -26,14 +26,50 @@ async def test_run_diagnostics():
 
 
 @pytest.mark.asyncio
-async def test_doctor_daemon_fix_action_is_callable():
+async def test_doctor_daemon_fix_action_is_callable(monkeypatch):
+    import shutil
+
+    from aglibol.ollama.client import OllamaClient
+
+    # Mock Ollama as installed on host but daemon not yet responsive
+    monkeypatch.setattr(
+        shutil, "which", lambda cmd: "/fake/bin/ollama" if cmd == "ollama" else None
+    )
+
+    async def mock_unhealthy():
+        return False
+
+    monkeypatch.setattr(OllamaClient, "health_check", lambda self: mock_unhealthy())
+
     results = await run_diagnostics(auto_fix=False)
     daemon_check = next((r for r in results if r.name == "Daemon Connection"), None)
     assert daemon_check is not None
-    if daemon_check.status == "FAIL":
-        assert daemon_check.fix_available is True
-        assert daemon_check.fix_action is not None
-        assert callable(daemon_check.fix_action)
+    assert daemon_check.status == "FAIL"
+    assert daemon_check.fix_available is True
+    assert daemon_check.fix_action is not None
+    assert callable(daemon_check.fix_action)
+
+
+@pytest.mark.asyncio
+async def test_doctor_daemon_fix_unavailable_when_not_installed(monkeypatch):
+    import shutil
+
+    from aglibol.ollama.client import OllamaClient
+
+    # Mock Ollama as completely missing from system
+    monkeypatch.setattr(shutil, "which", lambda cmd: None)
+    monkeypatch.setattr("sys.platform", "linux")
+
+    async def mock_unhealthy():
+        return False
+
+    monkeypatch.setattr(OllamaClient, "health_check", lambda self: mock_unhealthy())
+
+    results = await run_diagnostics(auto_fix=False)
+    daemon_check = next((r for r in results if r.name == "Daemon Connection"), None)
+    assert daemon_check is not None
+    assert daemon_check.status == "FAIL"
+    assert daemon_check.fix_available is False
 
 
 @pytest.mark.asyncio
