@@ -6,6 +6,9 @@ on:
       - "v*.*.*"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: Run Test Suite
@@ -31,13 +34,11 @@ jobs:
       - name: Run pytest
         run: python -m pytest tests/ -v
 
-  publish-pypi:
-    name: Build & Publish to PyPI
+  build-artifacts:
+    name: Build Distribution Packages
     needs: test
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
-    permissions:
-      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -53,15 +54,80 @@ jobs:
       - name: Build sdist and wheel
         run: python -m build
 
+      - name: Verify package integrity
+        run: twine check dist/*
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+          retention-days: 7
+
+  github-release:
+    name: Create GitHub Release
+    needs: build-artifacts
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download distribution artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-pypi:
+    name: Build & Publish to PyPI
+    needs: build-artifacts
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install twine
+        run: pip install --upgrade twine
+
+      - name: Download distribution artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: twine upload dist/*
+        run: |
+          if [ -z "$TWINE_PASSWORD" ]; then
+            echo "::warning::PYPI_API_TOKEN secret is not configured in repository settings. Skipping PyPI upload."
+          else
+            twine upload dist/*
+          fi
 
   publish-npm:
     name: Publish NPX Wrapper to NPM
-    needs: publish-pypi
+    needs: test
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
 
@@ -79,7 +145,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          # Extract version from git tag v1.2.3 -> 1.2.3
-          VERSION=${GITHUB_REF#refs/tags/v}
-          npm version $VERSION --no-git-tag-version
-          npm publish --access public
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::warning::NPM_TOKEN secret is not configured in repository settings. Skipping npm publish."
+          else
+            VERSION=${GITHUB_REF#refs/tags/v}
+            npm version $VERSION --no-git-tag-version
+            npm publish --access public
+          fi

@@ -51,11 +51,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Aglibol/AglibolAgent"
-Repository = "https://github.com/Aglibol/AglibolAgent.git"
-Issues = "https://github.com/Aglibol/AglibolAgent/issues"
-Changelog = "https://github.com/Aglibol/AglibolAgent/blob/main/CHANGELOG.md"
-Documentation = "https://github.com/Aglibol/AglibolAgent#readme"
+Homepage = "https://github.com/xushiexpresso15/AglibolAgent"
+Repository = "https://github.com/xushiexpresso15/AglibolAgent.git"
+Issues = "https://github.com/xushiexpresso15/AglibolAgent/issues"
+Changelog = "https://github.com/xushiexpresso15/AglibolAgent/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/xushiexpresso15/AglibolAgent#readme"
 
 [project.optional-dependencies]
 rag = [

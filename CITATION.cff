@@ -3,11 +3,11 @@ message: "If you use Aglibol Agent in your research or project, please cite it a
 title: "Aglibol Agent: An Open-Source Ollama-Native Multi-Agent Framework for Personal Devices"
 authors:
   - name: "Aglibol Agent Contributors"
-    website: "https://github.com/Aglibol/AglibolAgent"
+    website: "https://github.com/xushiexpresso15/AglibolAgent"
 version: 0.1.0
 date-released: 2026-09-26
-url: "https://github.com/Aglibol/AglibolAgent"
-repository-code: "https://github.com/Aglibol/AglibolAgent"
+url: "https://github.com/xushiexpresso15/AglibolAgent"
+repository-code: "https://github.com/xushiexpresso15/AglibolAgent"
 license: Apache-2.0
 keywords:
   - "multi-agent systems"
