@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Aglibol Agent Official One-Line Installer for Linux and macOS
-# Usage: curl -fsSL https://raw.githubusercontent.com/Aglibol/AglibolAgent/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/install.sh | bash
 
 set -e
 

@@ -1,5 +1,5 @@
 # Aglibol Agent Official One-Line Installer for Windows PowerShell
-# Usage: irm https://raw.githubusercontent.com/Aglibol/AglibolAgent/main/install.ps1 | iex
+# Usage: irm https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
 

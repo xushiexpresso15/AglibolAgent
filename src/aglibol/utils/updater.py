@@ -21,7 +21,7 @@ from aglibol import __version__
 
 console = Console()
 
-GITHUB_REPO = "Aglibol/AglibolAgent"
+GITHUB_REPO = "xushiexpresso15/AglibolAgent"
 GITHUB_RAW_VERSION_URL = (
     f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/src/aglibol/__init__.py"
 )

@@ -23,6 +23,7 @@ Run cooperative multi-agent workflows locally on 4 GB to 48 GB GPUs with zero cl
 - [Agent Roles and Autonomous Routing](#agent-roles-and-autonomous-routing)
 - [Hardware Profiles and Adaptive Scheduling](#hardware-profiles-and-adaptive-scheduling)
 - [Installation](#installation)
+- [Uninstallation](#uninstallation)
 - [Quick Start](#quick-start)
 - [Command-Line Interface](#command-line-interface)
 - [Security and Sandboxing](#security-and-sandboxing)
@@ -156,6 +157,47 @@ curl -fsSL https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/i
 ```powershell
 irm https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/install.ps1 | iex
 ```
+
+---
+
+## Uninstallation
+
+### Method 1: Linux and macOS (Automated Script)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/uninstall.sh | bash
+
+# To completely purge all stored sessions, checkpoints, and cache:
+curl -fsSL https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/uninstall.sh | bash -s -- --purge
+```
+
+### Method 2: Windows PowerShell (Automated Script)
+
+```powershell
+irm https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/uninstall.ps1 | iex
+
+# To completely purge all stored sessions, checkpoints, and cache:
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/xushiexpresso15/AglibolAgent/main/uninstall.ps1))) -Purge
+```
+
+### Method 3: Python Package Managers
+
+```bash
+# If installed via uv:
+uv tool uninstall aglibol-agent
+
+# If installed via pip:
+pip uninstall aglibol-agent
+
+# If installed via pipx:
+pipx uninstall aglibol-agent
+```
+
+### Cleaning Up Persistent Data Manually
+
+To manually remove local cache, checkpoints, and session history:
+- Linux / macOS: `rm -rf ~/.aglibol`
+- Windows PowerShell: `Remove-Item -Recurse -Force "$HOME\.aglibol"`
 
 ---
 
