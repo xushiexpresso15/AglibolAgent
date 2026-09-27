@@ -1,9 +1,12 @@
 # Aglibol Agent
 
+> 🌐 **Official Website & Docs**: [https://aglibol.vercel.app/](https://aglibol.vercel.app/)
+
 An open-source, Ollama-native multi-agent framework engineered for personal devices and consumer GPUs.
 
 Run cooperative multi-agent workflows locally on 4 GB to 48 GB GPUs with zero cloud API costs, complete data privacy, and zero Out-Of-Memory crashes.
 
+[![Website](https://img.shields.io/badge/Website-aglibol.vercel.app-7c3aed?style=flat&logo=vercel&logoColor=white)](https://aglibol.vercel.app/)
 [![CI Status](https://github.com/xushiexpresso15/AglibolAgent/actions/workflows/ci.yml/badge.svg)](https://github.com/xushiexpresso15/AglibolAgent/actions/workflows/ci.yml)
 [![OpenSSF Scorecard](https://github.com/xushiexpresso15/AglibolAgent/actions/workflows/scorecard.yml/badge.svg)](https://github.com/xushiexpresso15/AglibolAgent/actions/workflows/scorecard.yml)
 [![CodeQL](https://github.com/xushiexpresso15/AglibolAgent/actions/workflows/codeql.yml/badge.svg)](https://github.com/xushiexpresso15/AglibolAgent/actions/workflows/codeql.yml)
