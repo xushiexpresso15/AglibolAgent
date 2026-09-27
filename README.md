@@ -1,6 +1,6 @@
 # Aglibol Agent
 
-> 🌐 **Official Website & Docs**: [https://aglibol.vercel.app/](https://aglibol.vercel.app/)
+> **Official Website & Docs**: [https://aglibol.vercel.app/](https://aglibol.vercel.app/)
 
 An open-source, Ollama-native multi-agent framework engineered for personal devices and consumer GPUs.
 
